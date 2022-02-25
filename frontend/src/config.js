@@ -1,5 +1,5 @@
 export const LinkedInApi = {
-  clientId: "787plzq3n6rr3q",
+  clientId: "8603qelj8ltln1",
   redirectUrl: "http://localhost:3000/linkedin",
   oauthUrl:
     "https://www.linkedin.com/oauth/v2/authorization?response_type=code",
