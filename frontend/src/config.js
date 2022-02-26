@@ -8,6 +8,6 @@ export const LinkedInApi = {
 };
 
 export const NodeServer = {
-  baseURL: "http://localhost:8000",
+  baseURL: "https://solarhub24.herokuapp.com",
   getUserCredentials: "/getUserCredentials",
 };

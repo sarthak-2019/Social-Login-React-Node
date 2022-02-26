@@ -1,7 +1,6 @@
 import React from "react";
 import { LinkedInApi, NodeServer } from "./config";
 import axios from "axios";
-import linkedInLoginImage from "./linkedin-login-images/Retina/Sign-In-Small---Default.png";
 
 export default class App extends React.Component {
   initialState = {
@@ -17,6 +16,7 @@ export default class App extends React.Component {
   componentDidMount = () => {
     if (window.opener && window.opener !== window) {
       const code = this.getCodeFromWindowURL(window.location.href);
+      console.log("sar", code);
       window.opener.postMessage({ type: "code", code: code }, "*");
       window.close();
     }
@@ -26,6 +26,7 @@ export default class App extends React.Component {
   handlePostMessage = (event) => {
     if (event.data.type === "code") {
       const { code } = event.data;
+      console.log("sar", code);
       this.getUserCredentials(code);
     }
   };
@@ -59,7 +60,7 @@ export default class App extends React.Component {
   getUserCredentials = (code) => {
     console.log(code);
     axios
-      .get(`http://localhost:8000/getUserCredentials?code=${code}`)
+      .get(`${NodeServer.baseURL}/getUserCredentials?code=${code}`)
       .then((res) => {
         const user = res.data;
         this.setState({
